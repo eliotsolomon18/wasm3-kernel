@@ -13,10 +13,18 @@
 #define M3_VERSION_REV   0
 #define M3_VERSION       "0.5.0"
 
+#ifdef __KERNEL__
+#include <linux/module.h>
+#include <linux/slab.h>
+#define printf printk
+#define PRIi32 "i"
+#define PRIi64 "lli"
+#elif
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
 #include <stdarg.h>
+#endif
 
 #include "wasm3_defs.h"
 
@@ -294,6 +302,11 @@ d_m3ErrorConst  (trapStackOverflow,             "[trap] stack overflow")
     M3Result            m3_GetTableFunction         (IM3Function *          o_function,
                                                      IM3Module              i_module,
                                                      uint32_t               i_index);
+
+    M3Result            m3_FindFunctionInModule     (IM3Function *          o_function,
+                                                     IM3Runtime             i_runtime,
+                                                     const char * const     i_moduleName,
+                                                     const char * const     i_functionName);
 
     uint32_t            m3_GetArgCount              (IM3Function i_function);
     uint32_t            m3_GetRetCount              (IM3Function i_function);
