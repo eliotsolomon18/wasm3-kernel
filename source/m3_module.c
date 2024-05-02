@@ -51,6 +51,8 @@ void  m3_FreeModule  (IM3Module i_module)
 
         FreeImportInfo(&(i_module->memoryImport));
 
+        FreeImportInfo(&(i_module->memoryImport));
+
         m3_Free (i_module);
     }
 }
