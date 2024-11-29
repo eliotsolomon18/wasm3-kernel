@@ -10,8 +10,8 @@
 
 #define M3_VERSION_MAJOR 0
 #define M3_VERSION_MINOR 5
-#define M3_VERSION_REV   0
-#define M3_VERSION       "0.5.0"
+#define M3_VERSION_REV   1
+#define M3_VERSION       "0.5.1"
 
 #ifdef __KERNEL__
 #include <linux/module.h>
@@ -20,6 +20,7 @@
 #define PRIi32 "i"
 #define PRIi64 "lli"
 #elif
+#include <stddef.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
